@@ -31,7 +31,6 @@ export default Pagination;
 
 export const PaginationStyled = styled.div`
   .paginate-container {
-    background-color: red;
     display: flex;
     justify-content: space-around;
     position: absolute;
@@ -39,7 +38,7 @@ export const PaginationStyled = styled.div`
     width: 100%;
   }
 
-  /* .paginate-item {
+  .paginate-item {
     display: flex;
     justify-content: flex-end;
 
@@ -49,5 +48,5 @@ export const PaginationStyled = styled.div`
     font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
     font-size: 25px;
     padding: 20px;
-  } */
+  }
 `;

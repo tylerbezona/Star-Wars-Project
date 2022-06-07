@@ -5,88 +5,90 @@ import { characterToProfileImage } from "../styles/Global.variables";
 // import { CharacterBackground } from "../styles/Characters.Styled";
 
 const Characters = ({ characters, loading }) => {
-  const [flipped, setFlipped] = useState(false);
+  // const [flipped, setFlipped] = useState(false);
+  // className={flipped ? "flipped" : ""}
+  // onClick={() => setFlipped(true)}
+  // onClick={() => setFlipped(false)}
 
   return (
     <>
-      <div>
-        <div className="loading">{loading && <h1>Loading...</h1>}</div>
-        <CardContainer>
-          {characters.map((character, results) => {
-            return (
-              <CardInner key={results} className={flipped ? "flipped" : ""}>
-                <CardFront>
-                  {character.name}
-                  <button onClick={() => setFlipped(true)}>
-                    Click for details!
-                  </button>
-                </CardFront>
-                <CardBack>
-                  {character.height}
-                  <button onClick={() => setFlipped(false)}>WHOMEGALUL</button>
-                </CardBack>
-              </CardInner>
-            );
-          })}
-        </CardContainer>
-      </div>
+      <div className="loading">{loading && <h1>Loading...</h1>}</div>
+      <CardContainer>
+        {characters.map((character, results) => {
+          return (
+            <CardInner key={results}>
+              <CardFront>
+                <CardImage src={characterToProfileImage[character.name]} />
+                {/* <CardButton>Click for details!</CardButton> */}
+              </CardFront>
+              <CardBack>
+                {character.name}
+                {character.height}
+                {/* <CardButton>WHOMEGALUL</CardButton> */}
+              </CardBack>
+            </CardInner>
+          );
+        })}
+      </CardContainer>
     </>
   );
 };
 
 export default Characters;
 
-const CardSide = css`
-  color: greenyellow;
-  width: 150%;
-  min-width: 150%;
-  height: 400px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  backface-visibility: hidden;
-  -moz-backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  border: 2px solid greenyellow;
-`;
+const CardSide = css``;
 
 const CardContainer = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  max-width: 100%;
+  perspective: 1000px;
+
+  transform-style: preserve-3d;
   transition: z-index 500ms, transform 500ms;
   z-index: 0;
-  perspective: 1000px;
-  transform-style: preserve-3d;
 
-  &.flipped {
+  &:hover {
     z-index: 1;
   }
 `;
 
-const CardFront = styled.div`
-  ${CardSide}
+const CardInner = styled.div`
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 35%;
 
+  transition: transform 500ms;
+  transform-style: preserve-3d;
+  border: 1px solid greenyellow;
+
+  &:hover {
+    transform: rotateY(180deg);
+  }
+`;
+
+const CardImage = styled.img`
+  width: 100%;
+  height: 100%;
+`;
+
+const CardFront = styled.div`
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
   z-index: 0;
-  background: url("https://static1.moviewebimages.com/wordpress/wp-content/uploads/article/6He1Adg1iwCnzIu2Kpur3tGe9LL7N5.jpg?q=50&fit=contain&w=767&h=&dpr=1.5");
-  background-position: center;
 `;
 
 const CardBack = styled.div`
-  ${CardSide}
-  transform: rotateY(-180deg) translate(100%, 0);
-  background-color: #d7d7d7;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  background-color: blue;
   z-index: 1;
-`;
-
-const CardInner = styled.div`
-  flex: 1;
-  display: flex;
-  transition: transform 500ms;
-  transform-style: preserve-3d;
-
-  &.flipped {
-    transform: rotateY(180deg);
+  &:hover {
+    transform: translateY(-180deg) translate(100%, 0);
   }
 `;
