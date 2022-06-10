@@ -15,7 +15,7 @@ export default function App() {
   const [characters, setCharacters] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [charPerPage, setCharPerPage] = useState(1);
+  const [charPerPage, setCharPerPage] = useState(3);
 
   const fetchCharacters = async () => {
     setLoading(true);

@@ -42,11 +42,25 @@ export const PaginationStyled = styled.div`
     display: flex;
     justify-content: flex-end;
 
-    border: 1px solid greenyellow;
+    /* border: 1px solid greenyellow; */
+    color: black;
     text-decoration: none;
-    background-color: yellow;
-    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    background-color: grey;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     font-size: 25px;
     padding: 20px;
+    transition: all ease-in-out 300ms;
+    border-radius: 8px;
+
+    &:hover {
+      transform: scale(1.1);
+      background: radial-gradient(
+        circle,
+        rgba(240, 251, 63, 1) 0%,
+        rgba(252, 70, 70, 1) 100%
+      );
+      color: rgba(255, 255, 255, 1);
+      box-shadow: 0 5px 15px rgba(145, 92, 182, 0.4);
+    }
   }
 `;
