@@ -56,11 +56,11 @@ export const PaginationStyled = styled.div`
       transform: scale(1.1);
       background: radial-gradient(
         circle,
-        rgba(240, 251, 63, 1) 0%,
-        rgba(252, 70, 70, 1) 100%
+        rgba(255, 255, 255, 1) 0%,
+        rgba(0, 81, 133, 1) 100%
       );
       color: rgba(255, 255, 255, 1);
-      box-shadow: 0 5px 15px rgba(145, 92, 182, 0.4);
+      box-shadow: 0 0px 25px rgba(255, 255, 255, 0.8);
     }
   }
 `;

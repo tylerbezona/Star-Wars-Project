@@ -62,20 +62,18 @@ const Card = styled.div`
   }
 `;
 
-const CardTemplate = styled.div`
-  width: 100%;
-  backface-visibility: hidden;
-  height: 400px;
-  border-radius: 6px;
-  transform-style: preserve-3d;
-  transition: transform 1s cubic-bezier(0.8, 0.3, 0.3, 1);
-  transform: rotateY(0deg);
-  :hover {
-    transform: rotateY(-180deg);
-  }
-`;
+const CardTemplate = styled("div")(() => ({
+  width: "100%",
+  backfaceVisibility: "hidden",
+  height: "400px",
+  borderRadius: "6px",
+  transformStyle: "preserve-3d",
+  transition: "transform 1s cubic-bezier(0.8, 0.3, 0.3, 1)",
+}));
 
-const CardFront = styled(CardTemplate)(({ flip }) => ({}));
+const CardFront = styled(CardTemplate)(({ flip }) => ({
+  transform: flip ? "rotateY(-180deg)" : "rotateY(0deg)",
+}));
 
 const CardBack = styled(CardTemplate)(({ flip }) => ({
   position: "absolute",
@@ -83,9 +81,16 @@ const CardBack = styled(CardTemplate)(({ flip }) => ({
   left: 0,
 
   background:
-    "radial-gradient(circle, rgba(240,251,63,1) 0%, rgba(252,70,70,1) 100%)",
+    "radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(0,81,133,1) 100%)",
   transform: flip ? "rotateY(0deg)" : "rotateY(180deg)",
 }));
+
+// const CardImage = styled.img`
+
+//   max-width: 100%;
+//   height: unset;
+
+// `;
 
 const CardImage = styled("img")(({ img }) => ({
   backgroundImage: `url(${img})`,
@@ -111,5 +116,5 @@ const BGFade = styled("div")(() => ({
   bottom: 0,
   left: 0,
   height: "400px",
-  background: "grey",
+  background: "rgba(255, 255, 255, 0.8)",
 }));

@@ -6,8 +6,9 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   min-height: 100vh;
-  background-image: url("https://starwarsblog.starwars.com/wp-content/uploads/2020/04/star-wars-backgrounds-14.jpg");
-  background-position: center;
+  background-image: url("https://i.ytimg.com/vi/bdiPglJs4H0/maxresdefault.jpg");
+  background-position: -200px;
+
   background-size: 100%;
-  background-repeat: no-repeat;
+  /* background-repeat: no-repeat; */
 `;
