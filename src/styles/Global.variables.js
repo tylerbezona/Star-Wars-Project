@@ -17,6 +17,11 @@ export const characterToProfileImage = {
     "https://starwarsblog.starwars.com/wp-content/uploads/2021/03/which-leia-are-you-TALL.jpg",
   "Owen Lars":
     "https://i.pinimg.com/564x/e4/e0/58/e4e058824f8c68e37245ca2a465af88d.jpg",
-  "Beru Whitesun Lars":
-    "https://static.wikia.nocookie.net/starwars/images/7/76/Beru_headshot2.jpg/revision/latest?cb=20111029215429",
+  "Beru Whitesun lars":
+    "https://overlydevotedarchivist.net/wp-content/uploads/2015/09/tumblr_n4gsts4rba1rhqhm5o1_500.png.jpg",
+  "R5-D4": "https://pbs.twimg.com/media/Elw4eYSVkAAeYNd.jpg",
+  "Biggs Darklighter":
+    "https://starwarsblog.starwars.com/wp-content/uploads/2015/08/Biggs-1536x864-231144930049.png",
+  "Obi-Wan Kenobi":
+    "https://starwarsblog.starwars.com/wp-content/uploads/2022/04/Obi-wan-kenobi-quote-quiz-TALL.jpg",
 };

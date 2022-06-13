@@ -10,6 +10,7 @@ function FlipCard({ characters, loading }) {
 
   return (
     <CardContainer>
+      {loading && <h1>Loading...</h1>}
       {characters.map((character, result) => {
         return (
           <Card
@@ -25,8 +26,14 @@ function FlipCard({ characters, loading }) {
             </CardFront>
             <CardBack flip={flip}>
               <CardContent>
-                <h1 className="info-text">Name: {character.name} </h1>
-                <h2 className="info-text">Height: {character.height} </h2>
+                <h1 className="info-name">{character.name} </h1>
+                <h2 className="info-text">Height: {character.height}cm </h2>
+                <h2 className="info-text">Weight: {character.mass}kg </h2>
+                <h2 className="info-text">Gender: {character.gender} </h2>
+                <h2 className="info-text">Eye color: {character.eye_color} </h2>
+                <h2 className="info-text">
+                  Birth year: {character.birth_year}
+                </h2>
               </CardContent>
             </CardBack>
           </Card>
@@ -46,19 +53,26 @@ const CardContainer = styled("div")(() => ({
 }));
 
 const Card = styled.div`
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Courier New", Courier, monospace;
   font-size: 25px;
   position: relative;
   flex-basis: 100%;
   max-width: 300px;
   cursor: pointer;
 
+  .info-name {
+    font-weight: 650;
+    letter-spacing: 5px;
+    color: white;
+  }
+
   .info-text {
     display: flex;
     justify-content: space-between;
-
+    margin: 35px 0;
     color: black;
     font-weight: 700;
+    font-size: 23px;
   }
 `;
 
@@ -68,7 +82,7 @@ const CardTemplate = styled("div")(() => ({
   height: "400px",
   borderRadius: "6px",
   transformStyle: "preserve-3d",
-  transition: "transform 1s cubic-bezier(0.8, 0.3, 0.3, 1)",
+  transition: "transform 2s cubic-bezier(0.8,0.3, 0.3, 1.4)",
 }));
 
 const CardFront = styled(CardTemplate)(({ flip }) => ({
@@ -79,7 +93,7 @@ const CardBack = styled(CardTemplate)(({ flip }) => ({
   position: "absolute",
   top: 0,
   left: 0,
-
+  borderRadius: "10px",
   background:
     "radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(0,81,133,1) 100%)",
   transform: flip ? "rotateY(0deg)" : "rotateY(180deg)",
@@ -116,5 +130,6 @@ const BGFade = styled("div")(() => ({
   bottom: 0,
   left: 0,
   height: "400px",
-  background: "rgba(255, 255, 255, 0.8)",
+  background: "rgba(255, 255, 255, 0.6)",
+  borderRadius: "10px",
 }));

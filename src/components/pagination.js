@@ -34,7 +34,8 @@ export const PaginationStyled = styled.div`
     display: flex;
     justify-content: space-around;
     position: absolute;
-    bottom: 80px;
+    bottom: 25px;
+
     width: 100%;
   }
 
@@ -45,7 +46,7 @@ export const PaginationStyled = styled.div`
     /* border: 1px solid greenyellow; */
     color: black;
     text-decoration: none;
-    background-color: grey;
+    background-color: rgba(255, 255, 255, 0.25);
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     font-size: 25px;
     padding: 20px;
@@ -53,14 +54,15 @@ export const PaginationStyled = styled.div`
     border-radius: 8px;
 
     &:hover {
+      stroke-dashoffset: -480;
       transform: scale(1.1);
-      background: radial-gradient(
+      /* background: radial-gradient(
         circle,
-        rgba(255, 255, 255, 1) 0%,
+        rgba(255, 255, 255, 0.9) 0%,
         rgba(0, 81, 133, 1) 100%
-      );
+      ); */
       color: rgba(255, 255, 255, 1);
-      box-shadow: 0 0px 25px rgba(255, 255, 255, 0.8);
+      box-shadow: 0 0px 55px rgba(255, 255, 255, 0.8);
     }
   }
 `;

@@ -3,6 +3,7 @@ import { Container } from "./styles/Container.styled";
 import Characters from "./components/Characters";
 import FilmList from "./components/FilmList";
 import Pagination from "./components/pagination";
+import Header from "./components/header";
 import { reset } from "styled-reset";
 import { createGlobalStyle } from "styled-components";
 import axios from "axios";
@@ -43,6 +44,7 @@ export default function App() {
     <>
       <GlobalStyle />
       <Container>
+        <Header />
         <Characters characters={currentCharacters} loading={loading} />
         <Pagination
           charPerPage={charPerPage}

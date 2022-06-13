@@ -9,6 +9,6 @@ export const Container = styled.div`
   background-image: url("https://i.ytimg.com/vi/bdiPglJs4H0/maxresdefault.jpg");
   background-position: -200px;
 
-  background-size: 100%;
+  background-size: 2300px;
   /* background-repeat: no-repeat; */
 `;
