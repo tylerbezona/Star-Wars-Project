@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from "react";
-import { Container } from "./styles/Container.styled";
+import { Container, LightDarkButton } from "./styles/Container.styled";
 import Characters from "./components/Characters";
 import FilmList from "./components/FilmList";
 import Pagination from "./components/pagination";
-import Header from "./components/header";
 import { reset } from "styled-reset";
-import { createGlobalStyle } from "styled-components";
+import Header from "./components/header";
+import { createGlobalStyle, ThemeProvider } from "styled-components";
+import { lightTheme, darkTheme, GlobalStyles } from "./styles/themes";
+
 import axios from "axios";
 
-const GlobalStyle = createGlobalStyle`
-  ${reset}
-`;
-
+//
 export default function App() {
   const [characters, setCharacters] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [charPerPage, setCharPerPage] = useState(2);
+  const [theme, setTheme] = useState("Jedi");
 
   const fetchCharacters = async () => {
     setLoading(true);
@@ -30,6 +30,11 @@ export default function App() {
     fetchCharacters();
   }, []);
 
+  // Light and dark mode
+  const themeToggler = () => {
+    theme === "Jedi" ? setTheme("Sith") : setTheme("Jedi");
+  };
+
   // Get current characters
   const indexOfLastCharacter = currentPage * charPerPage;
   const indexOfFirstCharacter = indexOfLastCharacter - charPerPage;
@@ -41,9 +46,19 @@ export default function App() {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <>
-      <GlobalStyle />
+    // <ThemeProvider theme={themes[theme]}>
+    <ThemeProvider theme={theme === "Jedi" ? lightTheme : darkTheme}>
+      <GlobalStyles />
       <Container>
+        <LightDarkButton
+          onClick={() => {
+            themeToggler();
+          }}
+        >
+          <div>
+            <div className="theme-text"> {theme.toUpperCase()} </div>
+          </div>
+        </LightDarkButton>
         <Header />
         <Characters characters={currentCharacters} loading={loading} />
         <Pagination
@@ -52,10 +67,6 @@ export default function App() {
           paginate={paginate}
         />
       </Container>
-    </>
+    </ThemeProvider>
   );
 }
-/**
- * [{},{},{}].slice(0, 1)
- * [{}].map()
- */

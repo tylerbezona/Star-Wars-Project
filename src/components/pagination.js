@@ -64,5 +64,10 @@ export const PaginationStyled = styled.div`
       color: rgba(255, 255, 255, 1);
       box-shadow: 0 0px 55px rgba(255, 255, 255, 0.8);
     }
+
+    &:active {
+      transition: 200ms;
+      transform: scale(0.89);
+    }
   }
 `;

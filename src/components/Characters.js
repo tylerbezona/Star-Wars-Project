@@ -10,7 +10,7 @@ function FlipCard({ characters, loading }) {
 
   return (
     <CardContainer>
-      {loading && <h1>Loading...</h1>}
+      {loading && <h1 className="loading">LOADING...</h1>}
       {characters.map((character, result) => {
         return (
           <Card
@@ -45,12 +45,21 @@ function FlipCard({ characters, loading }) {
 
 export default FlipCard;
 
-const CardContainer = styled("div")(() => ({
-  display: "flex",
-  flexDirection: "row",
-  justifyContent: "space-around",
-  textAlign: "center",
-}));
+const CardContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  text-align: center;
+
+  .loading {
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: 50px;
+    font-weight: 900;
+    font-family: "Courier New", Courier, monospace;
+  }
+`;
 
 const Card = styled.div`
   font-family: "Courier New", Courier, monospace;
