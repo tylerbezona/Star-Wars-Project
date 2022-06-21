@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
 import FilmList from "./FilmList";
-import ReactCardFlip from "react-card-flip";
 import { characterToProfileImage } from "../styles/Global.variables";
 // import { CharacterBackground } from "../styles/Characters.Styled";
 
