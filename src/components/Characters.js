@@ -1,11 +1,18 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
-import FilmList from "./FilmList";
 import { characterToProfileImage } from "../styles/Global.variables";
 // import { CharacterBackground } from "../styles/Characters.Styled";
 
 function FlipCard({ characters, loading }) {
-  const [flip, setFlip] = useState(false);
+  const [flip, setFlip] = useState(new Array(characters.length).fill(false));
+
+  function flipCard(index, back) {
+    setFlip((prev) => {
+      const newFlip = [...prev];
+      newFlip[index] = back;
+      return newFlip;
+    });
+  }
 
   return (
     <CardContainer>
@@ -13,17 +20,18 @@ function FlipCard({ characters, loading }) {
       {characters.map((character, result) => {
         return (
           <Card
-            onMouseEnter={() => setFlip(true)}
-            onMouseLeave={() => setFlip(false)}
+            key={character.name}
+            id={result}
+            onMouseEnter={() => flipCard(result, true)}
+            onMouseLeave={() => flipCard(result, false)}
           >
-            <CardFront flip={flip}>
+            <CardFront flip={flip[result]} className="front">
               <CardContent>
-                {/* <h1> Front</h1> */}
                 <CardImage img={characterToProfileImage[character.name]} />
               </CardContent>
               <BGFade />
             </CardFront>
-            <CardBack flip={flip}>
+            <CardBack flip={flip[result]}>
               <CardContent>
                 <h1 className="info-name">{character.name} </h1>
                 <h2 className="info-text">Height: {character.height}cm </h2>
@@ -90,11 +98,11 @@ const CardTemplate = styled("div")(() => ({
   height: "400px",
   borderRadius: "6px",
   transformStyle: "preserve-3d",
-  transition: "transform 2s cubic-bezier(0.8,0.3, 0.3, 1.4)",
+  transition: "transform 2s cubic-bezier(0.8,0.3, 0.3, 1.4)"
 }));
 
 const CardFront = styled(CardTemplate)(({ flip }) => ({
-  transform: flip ? "rotateY(-180deg)" : "rotateY(0deg)",
+  transform: flip ? "rotateY(-180deg)" : "rotateY(0deg)"
 }));
 
 const CardBack = styled(CardTemplate)(({ flip }) => ({
@@ -104,15 +112,8 @@ const CardBack = styled(CardTemplate)(({ flip }) => ({
   borderRadius: "10px",
   background:
     "radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(0,81,133,1) 100%)",
-  transform: flip ? "rotateY(0deg)" : "rotateY(180deg)",
+  transform: flip ? "rotateY(0deg)" : "rotateY(180deg)"
 }));
-
-// const CardImage = styled.img`
-
-//   max-width: 100%;
-//   height: unset;
-
-// `;
 
 const CardImage = styled("img")(({ img }) => ({
   backgroundImage: `url(${img})`,
@@ -120,7 +121,7 @@ const CardImage = styled("img")(({ img }) => ({
   backgroundSize: "cover",
   backgroundRepeat: "no-repeat",
   width: "100%",
-  height: "400px",
+  height: "400px"
 }));
 
 const CardContent = styled("div")(() => ({
@@ -129,7 +130,7 @@ const CardContent = styled("div")(() => ({
   left: 0,
   width: "100%",
   backfaceVisibility: "hidden",
-  transform: "translateZ(70px) scale(0.90)",
+  transform: "translateZ(70px) scale(0.90)"
 }));
 
 const BGFade = styled("div")(() => ({
@@ -139,5 +140,5 @@ const BGFade = styled("div")(() => ({
   left: 0,
   height: "400px",
   background: "rgba(255, 255, 255, 0.6)",
-  borderRadius: "10px",
+  borderRadius: "10px"
 }));
